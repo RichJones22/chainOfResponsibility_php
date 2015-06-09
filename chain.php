@@ -1,9 +1,16 @@
 <?php
 /**
+ * The Chain of Responsibility Pattern Example.
+ *
  * Created by PhpStorm.
  * User: Rich
  * Date: 6/6/2015
  * Time: 12:40 AM
+ */
+
+/**
+ * HomeChecker is the brains behind this pattern.
+ * Class HomeChecker
  */
 
 abstract class HomeChecker {
