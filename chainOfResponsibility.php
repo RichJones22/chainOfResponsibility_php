@@ -12,6 +12,14 @@
  */
 
 /**
+ * Class HomeStatus
+ */
+class HomeStatus {
+    public $alarmOn = false;
+    public $locked = true;
+    public $lightsOff = false;
+}
+/**
  * Class HomeChecker
  */
 abstract class HomeChecker {
@@ -79,14 +87,6 @@ class Alarm extends HomeChecker {
     }
 }
 
-/**
- * Class HomeStatus
- */
-class HomeStatus {
-    public $alarmOn = false;
-    public $locked = true;
-    public $lightsOff = false;
-}
 
 // create new instances
 $locks = new Locks();
