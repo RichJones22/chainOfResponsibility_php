@@ -1,18 +1,19 @@
 <?php
 /**
- * The Chain of Responsibility Pattern Example.
+ * The Chain of Responsibility Pattern.
  *
- * Created by PhpStorm.
+ * Gives the ability to chain object calls together.
+ *
+ * Allows for the client to make a request without having to know how that request is going to be handled.
+ *
  * User: Rich
  * Date: 6/6/2015
  * Time: 12:40 AM
  */
 
 /**
- * HomeChecker is the brains behind this pattern.
  * Class HomeChecker
  */
-
 abstract class HomeChecker {
 
     protected $successor;
@@ -33,44 +34,54 @@ abstract class HomeChecker {
     }
 }
 
-
-
+/**
+ * Class Locks
+ */
 class Locks extends HomeChecker {
     public function check(HomeStatus $home)
     {
         if (!$home->locked)
         {
-            throw new Exception('The doors are not locked!! Abort abort.');
+            printf("The doors are not locked!! Abort abort.\n");
         }
 
         $this->next($home);
     }
 }
 
+/**
+ * Class Lights
+ */
 class Lights extends HomeChecker {
     public function check(HomeStatus $home)
     {
         if (!$home->lightsOff)
         {
-            throw new Exception('The lights are still on!! Abort abort.');
+            printf("The lights are still on!! Abort abort.\n");
         }
 
         $this->next($home);
     }
 }
 
+/**
+ * Class Alarm
+ */
 class Alarm extends HomeChecker {
     public function check(HomeStatus $home)
     {
         if (!$home->alarmOn)
         {
-            throw new Exception('The alarm has not been set!! Abort abort.');
+            printf("The alarm has not been set!! Abort abort.\n");
         }
 
         $this->next($home);
     }
 }
 
+/**
+ * Class HomeStatus
+ */
 class HomeStatus {
     public $alarmOn = false;
     public $locked = true;
